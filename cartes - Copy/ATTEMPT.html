@@ -1,0 +1,88 @@
+
+<html>
+<head>
+<script src="brython.js"></script>
+<script src="brython_stdlib.js"></script>
+<script type="text/python">
+from browser import document, html, alert
+
+def display(text):
+	document["display"].clear()
+	document["display"].html = text
+
+#---------------------------------
+
+import random
+
+cartes = ["C1", "CR", "CD", "CV", "CX", "C9", "C8", "C7"]
+random.shuffle(cartes)
+
+# on affiche la premiere cartes
+display("<img src='" + cartes[0] + ".png' width='400' />")
+
+n = 1
+
+def cartes_obo():
+	global cartes, n
+	display("<img src='" + cartes[n] + ".png' width='400' />")
+	n = n + 1
+	if n == 7:
+		document['cartes'].style.display = 'inline'
+
+i = 0
+select = ''
+def cartes_select(ev):
+	global i, select
+	select = select + str(ev.target.id)
+	ev.target.style.opacity = '0.5'
+	ev.target.style.cursor = 'not-allowed';
+	i = i + 1
+	if i == 3:
+		alert(select)
+
+document['display'].bind('click',cartes_obo)
+document['cartes'].bind('click',cartes_select)
+</script>
+</head>
+
+<body onload="brython()">
+
+<div id="display" style="display:inline"></div>
+
+<div id="cartes" style="display:none">
+	<img id='C1' dataid='CR' src='C1.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='CR' dataid='CR' src='CR.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='CD' dataid='CR' src='CD.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='CV' dataid='CR' src='CV.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='CX' dataid='CR' src='CX.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='C9' dataid='CR' src='C9.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='C8' dataid='CR' src='C8.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='C7' dataid='CR' src='C7.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='T1' dataid='CR' src='T1.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='TR' dataid='CR' src='TR.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='TD' dataid='CR' src='TD.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='TV' dataid='CR' src='TV.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='TX' dataid='CR' src='TX.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='T9' dataid='CR' src='T9.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='T8' dataid='CR' src='T8.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='T7' dataid='CR' src='T7.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='K1' dataid='CR' src='K1.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='KR' dataid='CR' src='KR.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='KD' dataid='CR' src='KD.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='KV' dataid='CR' src='KV.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='KX' dataid='CR' src='KX.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='K9' dataid='CR' src='K9.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='K8' dataid='CR' src='K8.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='K7' dataid='CR' src='K7.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='P1' dataid='CR' src='P1.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='PR' dataid='CR' src='PR.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='PD' dataid='CR' src='PD.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='PV' dataid='CR' src='PV.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='PX' dataid='CR' src='PX.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='P9' dataid='CR' src='P9.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='P8' dataid='CR' src='P8.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+	<img id='P7' dataid='CR' src='P7.png' style='cursor:pointer;pointer-events:auto;opacity:1' width='100' />
+</div>
+
+</body>
+</html>
