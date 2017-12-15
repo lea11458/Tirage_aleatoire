@@ -1,0 +1,52 @@
+<html>
+<head>
+<script src="brython.js"></script>
+<script src="brython_stdlib.js"></script>
+<script type="text/python">
+from browser import document
+
+def display(text):
+	document["display"].clear()
+	document["display"].html = text
+
+
+#---------------------------------
+# LE CODE
+#---------------------------------	
+#on telecharge la fonction random
+import random
+#on cree une liste avec toutes les cartes d'un packet
+cartes = ["C1", "CR", "CD", "CV", "CX", "C9", "C8", "C7", "K1", "KR", "KD", "KV", "KX", "K9", "K8", "K7", "P1", "PR", "PD", "PV", "PX", "P9", "P8", "P7", "T1", "TR", "TD", "TV", "TX", "T9", "T8", "T7"]
+#on associe une carte a une photo
+n=0
+def change(event):
+	global cartes, n
+	document["display"].clear()
+	document["display"].html = "<img src='" + cartes[n] +".png' width='400'/>"
+	n = n + 1
+document["button1"].bind("click", change)
+#on genere un packet de cartes dans un ordre aleatoire et on store l'ordre
+random.shuffle(cartes)
+
+
+#on separe ce que l'utilisateur a saisi en de donnees differentes
+separation = x.split() #string separe pour faire une liste
+#on ajoute une variable qui compte le score de l'utilisateur
+score = 0
+#On calcul le score de l'utilisateur: 
+for n in range(0, 32):
+  if cartes[n] == separation[n]:
+    score = score + 1
+#on montre a l'utilisateur son score
+display (score)
+
+</script>
+</head>
+
+<body onload="brython()">
+
+<button id="button1">PROCHAINE CARTE</button>
+<div id="display"></div>
+
+</body>
+</html>
